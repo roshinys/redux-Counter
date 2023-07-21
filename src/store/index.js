@@ -11,27 +11,19 @@ const counterReducer = (state = { counter: 0 }, action) => {
       counter: state.counter - 1,
     };
   }
-  if (action.type === "incrementby2") {
+  if (action.type === "incrementby5") {
     return {
-      counter: state.counter + 2,
+      counter: state.counter + 5,
     };
   }
-  if (action.type === "decrement") {
+  if (action.type === "decrementby5") {
     return {
-      counter: state.counter - 2,
+      counter: state.counter - 5,
     };
   }
+  return state;
 };
 
 const store = createStore(counterReducer);
 
-const counterSubcriber = () => {
-  const latestState = store.getState();
-  console.log(latestState);
-};
-
-store.subscribe(counterSubcriber);
-store.dispatch({ type: "increment" });
-store.dispatch({ type: "decrement" });
-store.dispatch({ type: "incrementby2" });
-store.dispatch({ type: "decrementby2" });
+export default store;
